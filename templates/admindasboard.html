@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>UCMS Admin</title>
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
+
+    
+
+    <link href="/assets/css/dasboard.css" rel="stylesheet">
+    <script src="/assets/htmx.js"></script>
+
+    </head>
+
+   
+  <body>
+    <div class="heading">
+      <h1 class="ucms_name">University College Of Metaphisical Science<br>
+          <span>Admin</span></n>
+      </h1>
+      <div class="heading_nav">
+          <ul class="heading_nav_ul">
+              <li><a href="">sign out</a></li>
+              <li><a href="">sign in</a></li>
+              <li><a href="">{{ .Name}}</a></li>
+          </ul>
+      </div>
+  </div>
+
+
+  <div class="side_bar">
+      <ul class="side_ul">
+          <li><button hx-get="/programcards"  
+                    hx-target="#maincontaint"
+                    class="dashbuttons">Programs</button>
+            </li>
+          <li><button class="dashbuttons">Lecturers</button></li>
+          <li><button class="dashbuttons">Students</button></li>
+          <li><button class="dashbuttons">Messages</button></li>
+          <li><button class="dashbuttons">News</button></li>
+          <li><button class="dashbuttons">Store</button></li>
+      </ul>
+      
+  </div>
+
+
+
+
+  <div class="main">
+          <div class="containt" id="maincontaint">
+              <h2 class="dashboard_name">
+                  Programs
+              </h2>
+              <hr>
+              <div class="tochange">
+                <div class="programs">
+                    <div class="programcard">
+                        <h4>Award of Certificate of Attendance in Metaphysical Sciences</h4>
+                        <hr>
+                        <ul>
+                            <li>Communication Skills
+                            </li>
+                            <li>Public Speaking
+                            </li>
+                            <li>Intuition</li>
+                            <li>Understanding Religions of the World</li>
+                            <li>Public Relations</li>
+                            <li>Anger Management</li>
+                            <li>Connecting With Angels</li>
+                            <li>Critical Thinking</li>
+                            <li>Financial Education</li>
+
+                        </ul>
+                        <div class="bottom-details">
+                            <p>Students: <span>Number</span> </p>
+                            <a href="">Details</a>
+                        </div>
+                    </div>
+                    <div class="programcard">
+                        <h5>Award of Certificate in Metaphysical Sciences</h5>
+                        <hr>
+                    </div><div class="programcard">
+                        <h5>Award of Diploma in Metaphysical Sciences</h5>
+                        <hr>
+                    </div><div class="programcard">
+                        <h5>Award of Bachelors Degree in Metaphysical Sciences</h5>
+                        <hr>
+                    </div><div class="programcard">
+                        <h5>Award of Masters Degree in Metaphysical Sciences</h5>
+                        <hr>
+                    </div><div class="programcard">
+                        <h5>Ph.D in Metaphysical Sciences</h5>
+                        <hr>
+                    </div>
+                    
+                </div>
+              </div>
+            </div>
+  </div>
+
+
+  </body>
+</html>
