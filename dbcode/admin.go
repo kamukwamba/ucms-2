@@ -19,7 +19,7 @@ func AdminGet() []AdminInfo {
 
 	dbread := SqlRead()
 	var infor_out AdminInfo
-	rows, err := dbread.DB.Query("select id, admin_name, admin_email, admin_password from admin")
+	rows, err := dbread.DB.Query("select uuid, admin_name, admin_email, admin_password from admin")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -58,7 +58,7 @@ func CreateAdmin(info AdminInfo) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	stmt, err := tx.Prepare("insert into admin(id, admin_name, admin_email, admin_password) values(?, ?, ?, ?)")
+	stmt, err := tx.Prepare("insert into admin(uuid, admin_name, admin_email, admin_password) values(?, ?, ?, ?)")
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -17,6 +17,26 @@ func main() {
 
 	defer dbread.DB.Close()
 
+	sqlacams := ` 
+		create table if not exists acams(
+			uuid blod not null,
+			st_uuid blob not null,
+			first_name text,
+			last_name text,
+			email text,
+			payment_type text,
+			paid text,
+			accepted text,
+			communication text,
+			public_speaking text,
+			intuition text,
+			understanding_religion text,
+			public_relation text,
+			anger_management text,
+			connecting_with_angles text,
+			critical_thinking text,
+			complete text);
+		`
 	sqlStmt := `
 	create table if not exists admin(
 		uuid blob not null,
@@ -51,6 +71,12 @@ func main() {
 													use_of_degree text, 
 													reason_for_choice text, 
 													method_of_incounter text);`
+
+	_, erracams := dbread.DB.Exec(sqlacams)
+	if erracams != nil {
+		log.Printf("%q: %s\n", erracams, sqlStmt)
+		return
+	}
 
 	_, errstd := dbread.DB.Exec(studentsdata)
 

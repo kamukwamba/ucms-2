@@ -38,9 +38,63 @@ type StudentInfo struct {
 	Method_Of_Encounter   string
 }
 
+type ACAMS struct {
+	UUID                   string
+	Student_UUID           string
+	First_Name             string
+	Last_Name              string
+	Email                  string
+	Payment_Method         string
+	Paid                   string
+	Accepted               string
+	Communication          string
+	Public_Speaking        string
+	Intuition              string
+	Understanding_Religion string
+	Public_Relation        string
+	Anger_Management       string
+	Connecting_With_Angels string
+	Critical_Thinking      string
+	Complete               string
+}
+
+func SendEMAIL() {
+	fmt.Println("New Student Registered")
+}
+
 func Validation(email string) bool {
 
 	result := false
+
+	return result
+}
+
+func AddStudentACAMS(data ACAMS) bool {
+	dbread := dbcode.SqlRead()
+	entry, err := dbread.DB.Begin()
+	var result bool = true
+	if err != nil {
+		log.Fatal(err)
+	}
+	stmt, err := entry.Prepare("insert into acams(uuid, st_uuid, first_name, last_name, email,payment_type,paid, accepted, communication, public_speaking, intuition, understanding_religion, public_relation,anger_management,connectiong_with_angles, critical_thinking,complete) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer stmt.Close()
+
+	_, err = stmt.Exec()
+	if err != nil {
+		log.Fatal(err)
+		fmt.Println("PART 2: Failed to save acams")
+		result = false
+	}
+
+	err = entry.Commit()
+	if err != nil {
+		log.Fatal(err)
+		result = false
+	}
 
 	return result
 }
@@ -184,7 +238,51 @@ func ConfirmEnrollment(w http.ResponseWriter, r *http.Request) {
 	} else {
 		fmt.Println("Create New User")
 		result := CreateStudent(studentsdatain)
-		fmt.Println(result)
+		if result {
+			stuuuid := encription.Generateuudi()
+			paid := "complete"
+			payment_method := "lamp"
+			accepted := "false"
+			communication := "incomplete"
+			public_speaking := "incomplete"
+			intuition := "incomplete"
+			understanding_religion := "incomplete"
+			public_relation := "incomplete"
+			anger_management := "incomplete"
+			connecting_with_angles := "incomplete"
+			critical_thinking := "incomplete"
+			complete := "incomplete"
+
+			addstudentacams := ACAMS{
+				UUID:                   stuuuid,
+				Student_UUID:           uuid,
+				First_Name:             first_name,
+				Last_Name:              last_name,
+				Email:                  email,
+				Payment_Method:         payment_method,
+				Paid:                   paid,
+				Accepted:               accepted,
+				Communication:          communication,
+				Public_Speaking:        public_speaking,
+				Intuition:              intuition,
+				Understanding_Religion: understanding_religion,
+				Public_Relation:        public_relation,
+				Anger_Management:       anger_management,
+				Connecting_With_Angels: connecting_with_angles,
+				Critical_Thinking:      critical_thinking,
+				Complete:               complete,
+			}
+			addedtoacams := AddStudentACAMS(addstudentacams)
+
+			if addedtoacams {
+				SendEMAIL()
+			} else {
+				fmt.Println("Problem with adding student to acams")
+			}
+		} else {
+			fmt.Println("FAILED TO CREATE NEW USER")
+		}
+
 		err := tpl.ExecuteTemplate(w, "confirmenroll.html", nil)
 
 		if err != nil {
