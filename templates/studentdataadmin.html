@@ -1,8 +1,5 @@
 
 
-<link rel="stylesheet" href="/assets/css/dasboard.css">
-
-
 <h2 class="dashboard_name">
     Students
 </h2>
@@ -15,8 +12,9 @@
       <th scope="col">Last Name</th>
       <th scope="col">Email</th>
       <th scope="col">Program</th>
-      <th scope="col">Paid</th>
       <th scope="col">Accepted</th>
+      <th scope="col">Paid</th>
+      <th scope="col">Payment Method</th>
       <th scope="col">Completed</th>
       <th scope="col">Details</th>
       <th scope="col">Edit</th>
@@ -27,15 +25,17 @@
     {{ range .}}
     <tr>
       <th scope="row">{{ .Counter}}</th>
-      <td>{}</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>ACAMS</td>
-      <td>True</td>
-      <td>True</td>
-      <td>False</td>
-      <td><a class="studentdata" href="">Details</a></td>
-      <td><a class="studentdata" href="">Update</a></td>
+      <td>{{ .First_Name}}</td>
+      <td>{{ .Last_Name}}</td>
+      <td>{{ .Email}}</td>
+      <td>{{ .Program}}</td>
+      <td>{{ .Payment_Method}}</td>
+      <td>{{ .Paid}}</td>
+      <td>{{ .Accepted}}</td>
+      <td>{{ .Completed}}</td>
+      <td><a class="studentdata"  href="/">Details</a></td>
+      <td><a class="studentdata" href="/">Update</a></td>
+    
     </tr>
 
     {{ end }}

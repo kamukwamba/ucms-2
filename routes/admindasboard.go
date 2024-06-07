@@ -20,16 +20,25 @@ type AdminInfo struct {
 }
 
 type ReturnACAMS struct {
-	Counter        int
-	UUID           string
-	First_Name     string
-	Last_Name      string
-	Email          string
-	Program        string
-	Accepted       string
-	Paid           string
-	Payment_Method string
-	Completed      string
+	Counter                int
+	UUID                   string
+	Student_UUID           string
+	First_Name             string
+	Last_Name              string
+	Email                  string
+	Program                string
+	Accepted               string
+	Paid                   string
+	Payment_Method         string
+	Communication          string
+	Public_Speaking        string
+	Intuition              string
+	Understanding_Religion string
+	Public_Relation        string
+	Anger_Management       string
+	Connecting_With_Angels string
+	Critical_Thinking      string
+	Completed              string
 }
 
 func AdminAuth(data AdminLogData, dataList []dbcode.AdminInfo) (bool, AdminInfo) {
@@ -109,20 +118,28 @@ func GetACAMSStudents() []ReturnACAMS {
 	for rows.Next() {
 		conuter += 1
 		var uuid string
+		var student_uuid string
 		var first_name string
 		var last_name string
 		var email string
-		var program string
+		var accepted string
 		var paid string
 		var payment_method string
-		// var accepted string
+		var communication string
+		var public_speaking string
+		var intuition string
+		var understanding_religion string
+		var public_relation string
+		var anger_management string
+		var connecting_with_angles string
+		var critical_thinking string
 		var complete string
-		// accepted = "yes"
 
-		err := rows.Scan(&uuid, &first_name, &last_name, &email, &program, &payment_method, &paid, &complete)
+		err := rows.Scan(&uuid, &student_uuid, &first_name, &last_name, &email, &accepted, &payment_method, &paid, &communication, &public_speaking, &intuition, &understanding_religion, &public_relation, &anger_management, &connecting_with_angles, &critical_thinking, &complete)
 
 		if err != nil {
 			fmt.Println("Check the scan for student data")
+			log.Fatal(err)
 		}
 
 		dataout := ReturnACAMS{
@@ -131,7 +148,8 @@ func GetACAMSStudents() []ReturnACAMS {
 			First_Name:     first_name,
 			Last_Name:      last_name,
 			Email:          email,
-			Program:        program,
+			Accepted:       accepted,
+			Program:        "ACAMS",
 			Payment_Method: payment_method,
 			Paid:           paid,
 			Completed:      complete,

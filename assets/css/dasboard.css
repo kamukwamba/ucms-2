@@ -45,7 +45,13 @@
     margin-left: 20%;
     display: block;
     
+    
 
+}
+
+#maincontaint{
+    overflow-x: scroll;
+    overflow-y: visible;
 }
 
 .containt{
@@ -58,6 +64,7 @@
     display: inline-block;
     color: rgb(37, 0, 62);
     font-size: 1.8em;
+    
     
 }
 
@@ -213,4 +220,26 @@
     color:  rgb(37, 0, 62);
 }
 
+.studentacams{
+    background-color: blue;
+    color: purple;
+}
 
+.studentdata{
+    text-decoration: none;
+    background-color: rgb(37, 0, 62);
+    color: white;
+    text-decoration: none;
+    width: 100px;
+    height: 30px;
+    border: 1px solid rgb(37, 0, 62);
+    border-radius: 3px;
+    display: block;
+    text-align: center;
+}   
+
+.tddiv{
+    background-color: red;
+    width: 100px;
+    height: 50px;
+}
