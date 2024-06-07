@@ -71,19 +71,20 @@ func Validation(email string) bool {
 
 func AddStudentACAMS(data ACAMS) bool {
 	dbread := dbcode.SqlRead()
+	studentuuid := encription.Generateuudi()
 	entry, err := dbread.DB.Begin()
 	var result bool = true
 	if err != nil {
 		log.Fatal(err)
 	}
-	stmt, err := entry.Prepare("insert into acams(uuid, st_uuid, first_name, last_name, email,payment_type,paid, accepted, communication, public_speaking, intuition, understanding_religion, public_relation,anger_management,connectiong_with_angles, critical_thinking,complete) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)")
+	stmt, err := entry.Prepare("insert into acams(uuid, st_uuid, first_name, last_name, email,payment_type,paid, accepted, communication, public_speaking, intuition, understanding_religion, public_relation,anger_management,connecting_with_angles, critical_thinking,complete) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)")
 
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer stmt.Close()
 
-	_, err = stmt.Exec()
+	_, err = stmt.Exec(studentuuid, data.Student_UUID, data.First_Name, data.Last_Name, data.Email, data.Payment_Method, data.Paid, data.Accepted, data.Communication, data.Public_Speaking, data.Intuition, data.Understanding_Religion, data.Public_Relation, data.Anger_Management, data.Connecting_With_Angels, data.Critical_Thinking, data.Complete)
 	if err != nil {
 		log.Fatal(err)
 		fmt.Println("PART 2: Failed to save acams")

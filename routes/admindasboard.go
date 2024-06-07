@@ -19,6 +19,19 @@ type AdminInfo struct {
 	Password string
 }
 
+type ReturnACAMS struct {
+	Counter        int
+	UUID           string
+	First_Name     string
+	Last_Name      string
+	Email          string
+	Program        string
+	Accepted       string
+	Paid           string
+	Payment_Method string
+	Completed      string
+}
+
 func AdminAuth(data AdminLogData, dataList []dbcode.AdminInfo) (bool, AdminInfo) {
 
 	var result bool
@@ -81,4 +94,65 @@ func AdminDashboard(w http.ResponseWriter, r *http.Request) {
 	// 	log.Fatal(err)
 	// }
 
+}
+
+func GetACAMSStudents() []ReturnACAMS {
+	dbread := dbcode.SqlRead()
+	var conuter int
+	var datalist []ReturnACAMS
+	rows, err := dbread.DB.Query("select * from  acams")
+	if err != nil {
+		fmt.Println("Failed to get acams student data")
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		conuter += 1
+		var uuid string
+		var first_name string
+		var last_name string
+		var email string
+		var program string
+		var paid string
+		var payment_method string
+		// var accepted string
+		var complete string
+		// accepted = "yes"
+
+		err := rows.Scan(&uuid, &first_name, &last_name, &email, &program, &payment_method, &paid, &complete)
+
+		if err != nil {
+			fmt.Println("Check the scan for student data")
+		}
+
+		dataout := ReturnACAMS{
+			Counter:        conuter,
+			UUID:           uuid,
+			First_Name:     first_name,
+			Last_Name:      last_name,
+			Email:          email,
+			Program:        program,
+			Payment_Method: payment_method,
+			Paid:           paid,
+			Completed:      complete,
+		}
+
+		datalist = append(datalist, dataout)
+
+	}
+
+	return datalist
+
+}
+
+func ACAMSStudentData(w http.ResponseWriter, r *http.Request) {
+	tpl = template.Must(template.ParseGlob("templates/*.html"))
+
+	acamsstudents := GetACAMSStudents()
+
+	err := tpl.ExecuteTemplate(w, "studentdataadmin.html", acamsstudents)
+
+	if err != nil {
+		log.Fatal(err)
+	}
 }

@@ -103,6 +103,7 @@ func main() {
 	http.HandleFunc("/adminlogin", routes.AdminLogin)
 	http.HandleFunc("/admindashboard", routes.AdminDashboard)
 	http.HandleFunc("/programcards", routes.Programcards)
+	http.HandleFunc("/acamsstudentdata", routes.ACAMSStudentData)
 
 	http.Handle("/assets/", http.StripPrefix("/assets", fs))
 

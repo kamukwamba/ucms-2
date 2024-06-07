@@ -24,9 +24,10 @@
     </tr>
   </thead>
   <tbody>
+    {{ range .}}
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
+      <th scope="row">{{ .Counter}}</th>
+      <td>{}</td>
       <td>Otto</td>
       <td>@mdo</td>
       <td>ACAMS</td>
@@ -36,6 +37,8 @@
       <td><a class="studentdata" href="">Details</a></td>
       <td><a class="studentdata" href="">Update</a></td>
     </tr>
+
+    {{ end }}
     
   </tbody>
 </table>

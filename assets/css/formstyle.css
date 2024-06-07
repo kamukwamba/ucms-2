@@ -1,14 +1,9 @@
-@font-face {
-    font-family: Custom-one;
-    src: url("fonts/Serenata Vantages Bold.ttf");
-}
-
 body{
     background-image: url("home_page_three.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
-    font-family: Custom-one;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
 }
 
@@ -20,7 +15,7 @@ body{
 
 .heading{
     text-align: center;
-    font-family: Custom-one;
+    
 }
 
 .form_div{
@@ -28,19 +23,12 @@ body{
     border-radius: 4px;
     background-color: rgb(251, 251, 251, 1);
     padding: 10px;
-    max-width: 800px;
+    max-width: 80%;
     margin-left: auto;
     margin-right: auto;
     overflow: hidden;
 }
 
-a{
-    text-decoration: none;
-}
-
-a:visited{
-    color: black;
-}
 
 .form_div input{
     margin-top: 10px;
@@ -52,7 +40,6 @@ a:visited{
     
     display: inline-block;
     width: 40%;
-    font-family: Custom-one;
     padding-top: 10px;
 
 }
@@ -91,13 +78,14 @@ a:visited{
     height: 40px;
     background-color:rgb(37, 0, 62);
     border: 1px solid rgb(37, 0, 62);
+    color: white;
     border-radius: 3px;
 }
-.subbutton{
-    background-color: blueviolet;
-    color: white;
-}
 
+.subbutton:hover{
+    background-color: white;
+    color: rgb(37, 0, 62);
+}
 
 .dropdowns{
     width: 250px;

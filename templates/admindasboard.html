@@ -36,12 +36,17 @@
 
   <div class="side_bar">
       <ul class="side_ul">
-          <li><button hx-get="/programcards"  
+          <li><button 
+                    hx-get="/programcards"  
                     hx-target="#maincontaint"
                     class="dashbuttons">Programs</button>
             </li>
-          <li><button class="dashbuttons">Lecturers</button></li>
-          <li><button class="dashbuttons">Students</button></li>
+          <li><button 
+            hx-get = "/acamsstudentdata"
+            hx-target ="#maincontaint"  
+            class="dashbuttons">Students</button></li>
+          <li><button class="dashbuttons">Lecturers</button>
+            </li>
           <li><button class="dashbuttons">Messages</button></li>
           <li><button class="dashbuttons">News</button></li>
           <li><button class="dashbuttons">Store</button></li>
