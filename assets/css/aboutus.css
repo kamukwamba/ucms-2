@@ -1,7 +1,3 @@
-@font-face {
-    font-family: Custom-one;
-    src: url("fonts/Serenata Vantages Bold.ttf");
-}
 
 
 
@@ -23,7 +19,6 @@
 
 
 .aboutus p{
-    font-family: Custom-one;
     font-size: 1.3em;
 
 }

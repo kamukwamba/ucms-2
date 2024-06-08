@@ -4,42 +4,60 @@
     Students
 </h2>
 <hr>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Program</th>
-      <th scope="col">Accepted</th>
-      <th scope="col">Paid</th>
-      <th scope="col">Payment Method</th>
-      <th scope="col">Completed</th>
-      <th scope="col">Details</th>
-      <th scope="col">Edit</th>
 
-    </tr>
-  </thead>
-  <tbody>
-    {{ range .}}
-    <tr>
-      <th scope="row">{{ .Counter}}</th>
-      <td>{{ .First_Name}}</td>
-      <td>{{ .Last_Name}}</td>
-      <td>{{ .Email}}</td>
-      <td>{{ .Program}}</td>
-      <td>{{ .Payment_Method}}</td>
-      <td>{{ .Paid}}</td>
-      <td>{{ .Accepted}}</td>
-      <td>{{ .Completed}}</td>
-      <td><a class="studentdata"  href="/">Details</a></td>
-      <td><a class="studentdata" href="/">Update</a></td>
-    
-    </tr>
 
-    {{ end }}
+<div class="tableheader">
+  <p class="programname">Award of Certificate of Attendance in Metaphysical Sciences</p>
+  <select class="programnamelist" id="">
+    <option value="">ACAMS</option>
+    <option value="">ACMS</option>
+    <option value="">ADMS</option>
+    <option value="">ABDMS</option>
+    <option value="">AMDMS</option>
+    <option value="">Ph.DMS</option>
     
-  </tbody>
-</table>
+
+  </select>
+</div> 
+<div>
+
+<div class="table_div">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Program</th>
+        <th scope="col">Accepted</th>
+        <th scope="col">Paid</th>
+        <th scope="col">Payment Method</th>
+        <th scope="col">Completed</th>
+        <th scope="col">Details</th>
+        <th scope="col">Edit</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      {{ range .}}
+      <tr>
+        <th scope="row">{{ .Counter}}</th>
+        <td>{{ .First_Name}}</td>
+        <td>{{ .Last_Name}}</td>
+        <td>{{ .Email}}</td>
+        <td>{{ .Program}}</td>
+        <td>{{ .Payment_Method}}</td>
+        <td>{{ .Paid}}</td>
+        <td>{{ .Accepted}}</td>
+        <td>{{ .Completed}}</td>
+        <td><a class="studentdata"  href="/">Details</a></td>
+        <td><a class="studentdata" href="/">Update</a></td>
+      
+      </tr>
+
+      {{ end }}
+      
+    </tbody>
+  </table>
 </div>

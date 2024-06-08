@@ -41,6 +41,11 @@ type ReturnACAMS struct {
 	Completed              string
 }
 
+type DashData struct {
+	ACAMSTotal int
+	AdminInfo
+}
+
 func AdminAuth(data AdminLogData, dataList []dbcode.AdminInfo) (bool, AdminInfo) {
 
 	var result bool
@@ -70,7 +75,7 @@ func AdminDashboard(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method == "POST" {
 		r.ParseForm()
-
+		acamscount := ACAMSCount()
 		adminList := dbcode.AdminGet()
 
 		email := r.PostFormValue("email")
@@ -83,9 +88,14 @@ func AdminDashboard(w http.ResponseWriter, r *http.Request) {
 
 		check, admin_dataout := AdminAuth(authget, adminList)
 
+		toshow := DashData{
+			ACAMSTotal: acamscount,
+			AdminInfo:  admin_dataout,
+		}
+
 		if check {
 			fmt.Println("redirecting")
-			err := tpl.ExecuteTemplate(w, "admindasboard.html", admin_dataout)
+			err := tpl.ExecuteTemplate(w, "admindasboard.html", toshow)
 
 			if err != nil {
 				log.Fatal(err)
@@ -173,4 +183,23 @@ func ACAMSStudentData(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatal(err)
 	}
+}
+
+func ACAMSCount() int {
+	dbread := dbcode.SqlRead()
+	var counter int
+
+	rows, err := dbread.DB.Query("select * from  acams")
+	if err != nil {
+		fmt.Println("Failed to get acams student data")
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		counter += 1
+
+	}
+
+	return counter
+
 }

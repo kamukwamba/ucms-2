@@ -13,7 +13,7 @@
 
     
 
-    <link href="/assets/css/dasboard.css?v=1.1" rel="stylesheet">
+    <link href="/assets/css/dasboard.css?v=1.14" rel="stylesheet">
     <script src="/assets/htmx.js"></script>
 
     </head>
@@ -27,7 +27,6 @@
       <div class="heading_nav">
           <ul class="heading_nav_ul">
               <li><a href="">sign out</a></li>
-              <li><a href="">sign in</a></li>
               <li><a href="">{{ .Name}}</a></li>
           </ul>
       </div>
@@ -83,7 +82,8 @@
 
                         </ul>
                         <div class="bottom-details">
-                            <p>Students: <span>Number</span> </p>
+                            <p>Students: <span>{{ .ACAMSTotal}}
+                            </span> </p>
                             <div class="btn2"><a href="">Details</a></div>
                         </div>
                     </div>
