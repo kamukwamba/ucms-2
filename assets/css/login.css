@@ -1,0 +1,21 @@
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.signbtn{
+    position: relative;
+    background-color: rgba(37, 0, 62, .8);
+    width: 120px;
+    height: 40px;
+    text-align: center;
+    color: white;
+    border: 1px solid rgba(37, 0, 62, .8);
+    border-radius: 3px;
+
+
+}
+
+.signbtn:hover{
+    color: rgba(37, 0, 62, .8);
+    background-color: white;
+}

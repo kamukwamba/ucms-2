@@ -104,6 +104,7 @@ func main() {
 	http.HandleFunc("/admindashboard", routes.AdminDashboard)
 	http.HandleFunc("/programcards", routes.Programcards)
 	http.HandleFunc("/acamsstudentdata", routes.ACAMSStudentData)
+	http.HandleFunc("/confirmlogin", routes.ConfirmStudentLogin)
 
 	http.Handle("/assets/", http.StripPrefix("/assets", fs))
 
