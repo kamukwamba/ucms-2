@@ -15,7 +15,7 @@ func ValidateSudent() bool {
 
 func ConfirmStudentLogin(w http.ResponseWriter, r *http.Request) {
 
-	tpl = template.Must(template.ParseGlob("/templates/*html"))
+	tpl = template.Must(template.ParseGlob("templates/*.html"))
 
 	r.ParseForm()
 	if r.Method == "POST" {
@@ -27,5 +27,5 @@ func ConfirmStudentLogin(w http.ResponseWriter, r *http.Request) {
 
 	}
 
-	fmt.Fprintln(w, "Confirming User")
+	tpl.ExecuteTemplate(w, "studentportal.html", nil)
 }

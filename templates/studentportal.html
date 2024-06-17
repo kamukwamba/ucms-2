@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/studentportal.css">
+    <title>Student Dash Board</title>
+</head>
+<body>
+    <header>
+        <div class="user_infor">
+            <div class="image_div">
+                <img  class="user_image" src="/assets/Images/homepage1.jpg" alt="">
+            </div>
+            <div  class="student_name">
+            <p>{{.First_Name}} {{.Last_Name}}</p>
+
+            </div>
+        </div>
+        <div class="accountfunctions">
+            <p><a href="/Messages">Messages</a></p>
+            <p><a href="/studentsettings">Settings</a></p>
+            <p><a href="/studentlogout">Log out</a></p>
+        </div>
+        
+    </header>
+    <main>
+        <div class="programs">
+            {{template "acamstable"}}
+        </div>
+    </main>
+    <footer>
+
+    </footer>
+</body>
+</html>

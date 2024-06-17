@@ -17,6 +17,13 @@ func main() {
 
 	defer dbread.DB.Close()
 
+	studentcridentials := `create table if not exists studentcridentials(
+		uuid blob not null,
+		student_uuid blob,
+		email text,
+		password text
+	)`
+
 	sqlacams := ` 
 		create table if not exists acams(
 			uuid blod not null,
@@ -71,6 +78,12 @@ func main() {
 													use_of_degree text, 
 													reason_for_choice text, 
 													method_of_incounter text);`
+
+	_, errstc := dbread.DB.Exec(studentcridentials)
+	if errstc != nil {
+		log.Printf("%q: %s\n", errstc, studentcridentials)
+		return
+	}
 
 	_, erracams := dbread.DB.Exec(sqlacams)
 	if erracams != nil {
