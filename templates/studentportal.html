@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/studentportal.css">
+    <link rel="stylesheet" href="/assets/css/studentportal.css?v=1.13">
     <title>Student Dash Board</title>
 </head>
 <body>
@@ -13,7 +13,7 @@
                 <img  class="user_image" src="/assets/Images/homepage1.jpg" alt="">
             </div>
             <div  class="student_name">
-            <p>{{.First_Name}} {{.Last_Name}}</p>
+            <p>{{.ACAMSCourse.First_Name}} {{.ACAMSCourse.Last_Name}}</p>
 
             </div>
         </div>
@@ -27,6 +27,11 @@
     <main>
         <div class="programs">
             {{template "acamstable"}}
+        </div>
+        <div class="proceed_div">
+            <div class="proceed_btn"> 
+                <a href="#">Proceed</a>
+            </div>
         </div>
     </main>
     <footer>

@@ -1,7 +1,7 @@
 {{define "Header"}}
 
 
-<link rel="stylesheet" href="/assets/css/navbar.css?v=1.14">
+<link rel="stylesheet" href="/assets/css/navbar.css?v=1.112">
 <link rel="stylesheet" href="/assets/css/headercss.css?v=1.14">
 
 <div class="header_size">
@@ -19,7 +19,7 @@
               <a href="/">Home</a>
           </li>
           <li>
-              <a href="/aboutus">About Us</a>
+              <a href="/aboutus/2">About Us</a>
           </li>
           <li>
               <a href="/programs">Programs</a>
@@ -47,41 +47,39 @@
             </ul>
           </li>
       </ul>
-      <ul>
-          <li class="hideonsmall">
-              <a href="/">Home</a>
-          </li> 
-          <li class="hideonsmall">
-              <a href="/aboutus">About Us</a>
-          </li>
-          <li class="hideonsmall">
-              <a href="/programs">Programs</a>
-          </li>
-          <li class="hideonsmall">
-              <a href="">Curriculum</a>
-          </li>
-          <li class="hideonsmall">
-              <a href="/enroll">Enrollment</a>
-          </li>
-          <li class="hideonsmall">
-              <a href="">Offerings</a>
-          </li>
-          <li class="hideonsmall">
-              <a href="">FAQ</a>
-          </li>
 
-          <li class="hideonsmall dropdown-list">
-
-          <a href="">Students<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-360 280-560h400L480-360Z"/></svg></a>
-          <ul class="dropdown-menu">
-              <li class="dropdown-itemct"><a  href="/login">Login</a></li>
-              <li class="dropdown-itemct"><a  href="/enroll">Enroll Now</a></li>
-              <li class="dropdown-itemct"><a  href="#">Student Center</a></li>
+      <div class="hideonsmall">
+        <a href="/">Home</a>
+      </div>
+      <div class="hideonsmall">
+        <a href="/aboutus/2">About Us</a>
+      </div>
+      <div class="hideonsmall">
+        <a href="/programs">Programs</a>
+      </div>
+      <div class="hideonsmall">
+        <a href="">Curriculum</a>
+      </div>
+      <div class="hideonsmall">
+        <a href="/enroll">Enrollment</a>
+      </div>
+      <div class="hideonsmall">
+        <a href="">Offerings</a>
+      </div>
+      <div class="hideonsmall">
+        <a href="">FAQ</a>
+      </div>
       
-              <li class="dropdown-itemct"><a  href="#">UCMS Store</a></li>
-            </ul>
-          </li>
-        
+      <div class="hideonsmall dropdown-list">
+        <a href="#">Student<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-360 280-560h400L480-360Z"/></svg></a>
+        <div class="dropdown-menu">
+            <a class="dropdown-itemct" href="/login">Login</a>
+            <a class="dropdown-itemct" href="/enroll">Enroll Now</a>
+            <a class="dropdown-itemct" href="#">Student Center</a>
+            <a class="dropdown-itemct"  href="#">UCMS Store</a>
+        </div>
+      </div>
+          
 
 
           <li onclick=showsidebar() class="hidden-menu">

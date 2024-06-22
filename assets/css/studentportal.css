@@ -116,3 +116,30 @@ table tr:nth-child(even) a:hover{
 table tr:nth-child(odd) a:hover{
     text-decoration: underline;
 }
+
+
+.proceed_div{
+    display: flex;
+    justify-content: end;
+    height: 40px;
+    width: 60vw;
+    margin-left:auto;
+    margin-top: 30px;
+    margin-right: auto;
+}
+
+.proceed_btn{
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    background-color: rgb(32, 0, 67);
+    width: 150px;
+    border: 1px solid rgb(32, 0, 67);
+    border-radius: 5px;
+    padding: 5px;
+    
+}
+
+.proceed_btn a{
+    color: white;
+}

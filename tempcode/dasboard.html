@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>UCMS Admin</title>
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
+
+    
+
+     <link href="dasboard.css" rel="stylesheet">
+
+    </head>
+
+   
+  <body>
+    <div class="heading">
+      <h1 class="ucms_name">University College Of Metaphisical Science<br>
+          <span>Admin</span></n>
+      </h1>
+      <div class="heading_nav">
+          <ul class="heading_nav_ul">
+              <li><a href="">sign out</a></li>
+              <li><a href="">sign in</a></li>
+              <li><a href="">Name of user signed in</a></li>
+          </ul>
+      </div>
+  </div>
+
+
+  <div class="side_bar">
+      <ul class="side_ul">
+          <li><button hx-get="/progrmas"
+                      hx-target="#tochange" 
+                      class="dashbuttons">Programs</button>
+            </li>
+          <li><button class="dashbuttons">Lecturers</button></li>
+          <li><button class="dashbuttons">Students</button></li>
+          <li><button class="dashbuttons">Messages</button></li>
+          <li><button class="dashbuttons">News</button></li>
+          <li><button class="dashbuttons">Store</button></li>
+      </ul>
+      
+  </div>
+
+
+
+
+  <div class="main">
+          <div class="containt">
+              <h2 class="dashboard_name">
+                  Students
+              </h2>
+              <hr>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Program</th>
+                    <th scope="col">Paid</th>
+                    <th scope="col">Completed</th>
+                    <th scope="col">Details</th>
+                    <th scope="col">Edit</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>ACAMS</td>
+                    <td>True</td>
+                    <td>False</td>
+                    <td><a class="studentdata" href="">Details</a></td>
+                    <td><a class="studentdata" href="">Update</a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                    <td>ACAMS</td>
+                    <td>True</td>
+                    <td>False</td>
+                    <td><a class="studentdata" href="">Details</a></td>
+                    <td><a class="studentdata" href="">Update</a></td>
+
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td colspan="2">Larry the Bird</td>
+                    <td>@twitter</td>
+                    <td>ACAMS</td>
+                    <td>True</td>
+                    <td>False</td>
+                    <td><a class="studentdata" href="">Details</a></td>
+                    <td><a class="studentdata" href="">Update</a></td>
+
+                  </tr>
+                  <tr>
+                    <th scope="row">4</th>
+                    <td colspan="2">Larry the Bird</td>
+                    <td>@twitter</td>
+                    <td>ACAMS</td>
+                    <td>True</td>
+                    <td>False</td>
+                    <td><a class="studentdata" href="">Details</a></td>
+                    <td><a class="studentdata" href="">Update</a></td>
+
+                  </tr>
+                  <tr>
+                    <th scope="row">5</th>
+                    <td colspan="2">Larry the Bird</td>
+                    <td>@twitter</td>
+                    <td>ACAMS</td>
+                    <td>True</td>
+                    <td>False</td>
+                    <td><a class="studentdata" href="">Details</a></td>
+                    <td><a class="studentdata" href="">Update</a></td>
+
+
+                  </tr>
+                </tbody>
+              </table>
+              </div>
+            </div>
+  </div>
+
+
+  </body>
+</html>

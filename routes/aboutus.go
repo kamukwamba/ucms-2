@@ -10,9 +10,10 @@ import (
 func AboutUs(w http.ResponseWriter, r *http.Request) {
 
 	tpl = template.Must(template.ParseGlob("templates/*.html"))
+	id := r.PathValue("id")
 
-	//debug failure to laod templates
-	fmt.Println("Working")
+	fmt.Println("ID Obtained from link", id)
+
 	err := tpl.ExecuteTemplate(w, "aboutus.html", nil)
 	fmt.Println("Working")
 

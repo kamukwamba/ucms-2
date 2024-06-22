@@ -32,6 +32,10 @@ nav{
     box-shadow: 3px 3px 3px 5px rgb(0,0,0,0.1);
     position: sticky;
     top: 0px;
+    display: flex;
+    justify-content: flex-end;
+    height: 45px;
+    padding: 5px;
     
     
     
@@ -96,7 +100,6 @@ nav a:hover{
     position: fixed;
     right: 0;
     height: 200px;
-    width: 100px;
     z-index: 999;
     background-color: rgba(37, 0, 62, .8);
     backdrop-filter: blur(20px);
@@ -106,21 +109,33 @@ nav a:hover{
     color: black;
     align-items: flex-start;
     justify-content: flex-start;
+    padding: 5px;
+    width: 200px;
 }
 
 .dropdown-itemct{
     width: 100%;
 }
 
+.dropdown-list p{
+    color: white;
+}
+
 .dropdown-itemct a{
     width: 100%;
 }
 
+
 .dropdown-list:hover .dropdown-menu{
         display: flex;
-        position: relative;
-        width: 200px;
+        position: absolute;
+        
+    
 
+}
+.hideonsmall{
+    position: relative;
+    display: inline-block;
 }
 
 .hidden-menu{

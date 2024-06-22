@@ -58,6 +58,13 @@ type ACAMS struct {
 	Complete               string
 }
 
+type StudentCridentials struct {
+	UUID        string
+	StudentUUID string
+	Email       string
+	Password    string
+}
+
 func SendEMAIL() {
 	fmt.Println("New Student Registered")
 }
@@ -67,6 +74,39 @@ func Validation(email string) bool {
 	result := false
 
 	return result
+}
+
+func CreateStudentCridentials(studentdate StudentCridentials) bool {
+
+	confirm_creation := true
+	dbread := dbcode.SqlRead()
+	cridentials, err := dbread.DB.Begin()
+	if err != nil {
+		log.Fatal()
+	}
+
+	stmt, err := cridentials.Prepare("insert into studentcridentials(uuid, student_uuid, email,password) values(?,?,?,?)")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	defer stmt.Close()
+	_, err = stmt.Exec(studentdate.UUID, studentdate.StudentUUID, studentdate.Email, studentdate.Password)
+
+	if err != nil {
+		log.Fatal(err)
+		fmt.Println("PART 2: Failed to save to cridentials")
+		confirm_creation = false
+	}
+
+	err = cridentials.Commit()
+	if err != nil {
+		log.Fatal(err)
+		confirm_creation = false
+	}
+
+	return confirm_creation
 }
 
 func AddStudentACAMS(data ACAMS) bool {
@@ -277,6 +317,14 @@ func ConfirmEnrollment(w http.ResponseWriter, r *http.Request) {
 
 			if addedtoacams {
 				SendEMAIL()
+				cridentuuid := encription.Generateuudi()
+				studentcridentials := StudentCridentials{
+					UUID:        cridentuuid,
+					StudentUUID: uuid,
+					Email:       email,
+					Password:    email,
+				}
+				CreateStudentCridentials(studentcridentials)
 			} else {
 				fmt.Println("Problem with adding student to acams")
 			}

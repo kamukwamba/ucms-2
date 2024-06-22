@@ -107,20 +107,21 @@ func main() {
 
 	fmt.Println("Server running")
 
-	http.HandleFunc("/", routes.HomePage)
-	http.HandleFunc("/aboutus", routes.AboutUs)
-	http.HandleFunc("/programs", routes.Programs)
-	http.HandleFunc("/login", routes.LoginPage)
-	http.HandleFunc("/enroll", routes.Enrollment)
-	http.HandleFunc("/confirmenrrol", routes.ConfirmEnrollment)
-	http.HandleFunc("/adminlogin", routes.AdminLogin)
-	http.HandleFunc("/admindashboard", routes.AdminDashboard)
-	http.HandleFunc("/programcards", routes.Programcards)
-	http.HandleFunc("/acamsstudentdata", routes.ACAMSStudentData)
-	http.HandleFunc("/confirmlogin", routes.ConfirmStudentLogin)
+	router := http.NewServeMux()
+	router.HandleFunc("/", routes.HomePage)
+	router.HandleFunc("/aboutus/{id}", routes.AboutUs)
+	router.HandleFunc("/programs", routes.Programs)
+	router.HandleFunc("/login", routes.LoginPage)
+	router.HandleFunc("/enroll", routes.Enrollment)
+	router.HandleFunc("/confirmenrrol", routes.ConfirmEnrollment)
+	router.HandleFunc("/adminlogin", routes.AdminLogin)
+	router.HandleFunc("/admindashboard", routes.AdminDashboard)
+	router.HandleFunc("/programcards", routes.Programcards)
+	router.HandleFunc("/acamsstudentdata", routes.ACAMSStudentData)
+	router.HandleFunc("/confirmlogin", routes.ConfirmStudentLogin)
 
-	http.Handle("/assets/", http.StripPrefix("/assets", fs))
+	router.Handle("/assets/", http.StripPrefix("/assets", fs))
 
-	http.ListenAndServe(":3000", nil)
+	http.ListenAndServe(":3000", router)
 
 }
