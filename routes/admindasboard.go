@@ -203,3 +203,8 @@ func ACAMSCount() int {
 	return counter
 
 }
+
+func StudentProfileData(w http.ResponseWriter, r *http.Request) {
+
+	fmt.Fprintln(w, "Obtaine Student Profile Data")
+}

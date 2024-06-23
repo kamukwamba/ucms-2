@@ -1,5 +1,7 @@
 
-
+<head>
+  <link rel="stylesheet" href="/assets/css/dasboard.css">
+</head>
 <h2 class="dashboard_name">
     Students
 </h2>
@@ -35,7 +37,7 @@
         <th scope="col">Payment Method</th>
         <th scope="col">Completed</th>
         <th scope="col">Details</th>
-        <th scope="col">Edit</th>
+      
 
       </tr>
     </thead>
@@ -51,8 +53,8 @@
         <td>{{ .Paid}}</td>
         <td>{{ .Accepted}}</td>
         <td>{{ .Completed}}</td>
-        <td><a class="studentdata"  href="/">Details</a></td>
-        <td><a class="studentdata" href="/">Update</a></td>
+        <td><a class="studentdatabtn"  href="/studentprofiledata">Details</a></td>
+        
       
       </tr>
 

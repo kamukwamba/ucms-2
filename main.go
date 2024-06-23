@@ -119,6 +119,7 @@ func main() {
 	router.HandleFunc("/programcards", routes.Programcards)
 	router.HandleFunc("/acamsstudentdata", routes.ACAMSStudentData)
 	router.HandleFunc("/confirmlogin", routes.ConfirmStudentLogin)
+	router.HandleFunc("POST /studentprofiledata", routes.StudentProfileData)
 
 	router.Handle("/assets/", http.StripPrefix("/assets", fs))
 

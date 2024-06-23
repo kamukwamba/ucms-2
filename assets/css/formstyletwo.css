@@ -1,10 +1,7 @@
 
 
 
-@font-face {
-    font-family: Custom-one;
-    src: url("fonts/Serenata Vantages Bold.ttf");
-}
+
 
 .heading{
     text-align: center;
@@ -22,7 +19,7 @@
     margin-top: 12%;
     margin-left: auto;
     margin-right: auto;
-    font-family: Custom-one;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     
 
 }
@@ -71,7 +68,7 @@
     border: 2px solid rgb(37, 0, 62);
     border-radius: 3px;
     background-color: rgb(37, 0, 62);
-    font-family: Custom-one;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .ctsubbtn:hover {
