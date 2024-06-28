@@ -26,7 +26,7 @@ header a{
 }
 
 .student_name{
-    color: rgb(32, 0, 67);
+    color: white;
     text-decoration: underline;
     display: inline-block;
 }
@@ -115,7 +115,7 @@ table tr:nth-child(odd) a:hover{
     display: flex;
     justify-content: end;
     height: 40px;
-    width: 60vw;
+    width: 70vw;
     margin-left:auto;
     margin-top: 30px;
     margin-right: auto;
@@ -135,4 +135,24 @@ table tr:nth-child(odd) a:hover{
 
 .proceed_btn a{
     color: white;
+}
+
+.proceed_btn:hover{
+    background-color: white;
+    color: rgb(32, 0, 67);
+}
+
+
+.proceed_btn a:hover{
+    color: rgb(32, 0, 67);
+}
+
+.programs{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.program_name{
+    text-align: center;
 }

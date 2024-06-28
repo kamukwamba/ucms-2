@@ -1,2 +1,12 @@
 welcome home
--
+-create list of programs for the student_name(done)
+-create cookie table for students and Lecturers
+-impliment ristriction on routes
+-style the details button 
+-work on css for the log in page for student 
+--implimet the remember me 
+--change the color(done)
+-email authentification AJAX using HTMX
+-check all fields inthe registraion form are required
+-add news tab to home screen 
+-work on main home screen

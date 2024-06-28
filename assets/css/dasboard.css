@@ -52,6 +52,7 @@
 .table_div{
     overflow-x: scroll;
     overflow-y: visible;
+    
 }
 
 .containt{
@@ -165,20 +166,24 @@
     text-align: left;
 }
 
-.programs{
-    width: 100%;
-    /*height: fit-content;
-    background-color: pink;
-    display: grid;
-    gap: 1rem; */
-    display: grid;
-    grid-template-columns: auto auto auto auto;
+.programdiv{
+
+    
+    position: relative;
+    display:inline-grid;
+    grid-template-columns: auto auto auto;
     grid-gap: 5px 5px;
     padding: 10px;
     overflow-y: hidden;
+    width: 100%;
  
 }
 
+.tochange{
+    position: relative;
+    width: 100%;
+    height: inherit;
+}
 
 .bottom-details{
     background-color:  rgba(37, 0, 62, .8);
@@ -233,18 +238,24 @@
     color: purple;
 }
 
-.studentdatabtn{
-    text-decoration: none;
+.studentdetailsbtn a{
+    display: inline-block;
     background-color: rgb(37, 0, 62);
     color: white;
     text-decoration: none;
-    width: 100px;
-    height: 30px;
-    border: 1px solid rgb(37, 0, 62);
-    border-radius: 3px;
-    display: block;
     text-align: center;
-}   
+    width: 70px;
+    height: 30px;
+    border: solid 1px rgb(37, 0, 62);
+    border-radius: 3px;
+}
+
+.studentdetailsbtn a:hover{
+    color: rgb(37, 0, 62);
+    
+}
+
+
 
 .tddiv{
     background-color: red;
