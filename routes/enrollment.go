@@ -1,10 +1,13 @@
 package routes
 
 import (
+	"database/sql/driver"
 	"fmt"
 	"html/template"
 	"log"
 	"net/http"
+	"strconv"
+	"strings"
 	"ucmps/dbcode"
 	"ucmps/encription"
 )
@@ -210,6 +213,56 @@ func Enrollment(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+type ProgramListName struct {
+	Program_Name []string
+}
+
+type StringSlice []string
+
+func (stringSlice StringSlice) Value() (driver.Value, error) {
+	var quotedStrings []string
+	for _, str := range stringSlice {
+		quotedStrings = append(quotedStrings, strconv.Quote(str))
+	}
+	value := fmt.Sprintf("[%s]", strings.Join(quotedStrings, ","))
+	return value, nil
+}
+
+func AddStudentPrograms(studentuuid, programname string) {
+	var programlistname StringSlice
+	uuid := encription.Generateuudi()
+
+	programlistname = append(programlistname, programname)
+
+	dbread := dbcode.SqlRead()
+	program_name_list, err := dbread.DB.Begin()
+	if err != nil {
+		log.Fatal()
+	}
+
+	stmt, err := program_name_list.Prepare("insert into studentprogramlist(uuid, student_uuid, program_list) values(?,?,?)")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	defer stmt.Close()
+	_, err = stmt.Exec(uuid, studentuuid, programlistname)
+
+	if err != nil {
+		log.Fatal(err)
+		fmt.Println("Failed to create Stduent program list")
+	}
+
+	err = program_name_list.Commit()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println("STUDENT PROGRAM LIST CREATED SUCCESFULLY")
+
+}
+
 func ConfirmEnrollment(w http.ResponseWriter, r *http.Request) {
 	tpl = template.Must(template.ParseGlob("templates/*.html"))
 
@@ -325,6 +378,7 @@ func ConfirmEnrollment(w http.ResponseWriter, r *http.Request) {
 					Password:    email,
 				}
 				CreateStudentCridentials(studentcridentials)
+				AddStudentPrograms(uuid, "ACAMS")
 			} else {
 				fmt.Println("Problem with adding student to acams")
 			}
