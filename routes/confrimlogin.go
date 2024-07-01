@@ -111,7 +111,7 @@ func ConfirmStudentLogin(w http.ResponseWriter, r *http.Request) {
 
 	var students_data_acams ACAMS
 
-	tpl = template.Must(template.ParseGlob("templates/*.html"))
+	tpl = template.Must(template.ParseGlob("templates/*/*.html"))
 
 	r.ParseForm()
 	if r.Method == "POST" {

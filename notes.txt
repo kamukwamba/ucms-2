@@ -10,3 +10,4 @@ welcome home
 -check all fields inthe registraion form are required
 -add news tab to home screen 
 -work on main home screen
+-changing the display type in the students changes the display type 

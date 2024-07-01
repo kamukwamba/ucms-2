@@ -1,128 +1,150 @@
 
 
-{{define "studentdatatemplate"}}
+<link rel="stylesheet" href="/assets/css/dasboard.css">
 
-
-
-<div class="student_name">
-    <p>{{.First_Name}} {{.Last_Name}}</p>
-</div>
-<hr>
-<div class="student_personal_information">
-    <p>Phone Number: {{.Phone_Number}}</p>
-    <p>Email: {{.Email}}</p>
-    <p>Date of Birtth: {{.Date_Of_Birth}}</p>
-    <p>Gender: {{.Gender}}</p>
-    <p>Marital Status: {{.Marital_Status}}</p>
-    <p>Education background: {{.Education_Background}}</p>
-    <p>Program:{{.program}}</p>
-    <p>High School Confirmation:{{.High_School}}</p>
-    <p>Grammer Confirmation: {{.Grammer_Verification}}</p>
-    <p>Waiver: {{.Waiver}}</p>
-    <p>Children: {{.Children}}</p>
-    <p>School Attended:{{.School_Attend}}</p>
-    <p>Program Studied:{{.Major_In}}</p>
-    <p>Degre Obtained: {{.Degree_Obtained}}</p>
-    <p>Current Occupation: {{.Current_Occupation}}</p>
-    <p>Field of interested in {{.Field_Interested}}</p>
-    <p>Prio Techniques Studied {{.Prio_Techniques}}</p>
-    <p>Previous Experience {{.Previouse_Experience}}</p>
-    <p>Purpose of enrollment {{.Purpose_of_Enrollment}}</p>
-    <p>Use of Knowledge odtained {{.Use_of_knowledge}}</p>
-    <p>Reason for chosing UCMS {{.Reason_For_Choice}}</p>
-    <p>How did they find out about UCMS {{.Method_Of_Encounter}}</p>
-
-</div>
-<div class="update_div">
-    <div class="update_btn">
-        <p>Update Student Profile</p>
+<div class="tochange">
+    <div class="student_name_details">
+        <p>{{ .First_Name}} {{ .Last_Name}}</p>
     </div>
-    <div class="delete_btn">
-        <p>Delete Student Profile</p>
-    </div>
-  </div>
-<hr>
-
-<div class="student_programs">
-  <h5>Programs Applied For</h5>
-  <hr>
-  
-  <div class="program_details">
-    <h5 class="program_name">Award of Certificate of Attendance in Metaphysical Sciences</h5>
+    <hr>
+    <div class="student_personal_information">
+        
+        <p>Phone Number: <span class="student_info">{{ .Phone}}</span></p>
+        <p>Email: <span class="student_info">{{ .Email}}</span></p>
+        <p>Date of Birtth: <span class="student_info">{{ .Date_Of_Birth}}</p>
+        <p>Gender:<span class="student_info"> {{ .Gender}}</span></p>
+        <p>Marital Status: <span class="student_info"> {{ .Marital_Status}}</span></p>
+        <p>Education background: <span class="student_info"> {{ .Education_Background}}</span></p>
+        <p>Program: <span class="student_info">{{ .Program}}</span></p>
+        <p>High School Confirmation: <span class="student_info"></span> {{ .High_School}}</span></p>
+        <p>Grammer Confirmation: <span class="student_info">{{ .Grammer_Confirmation}}</span></p>
+        <p>Waiver:<span class="student_info">{{ .Waiver}}</span></p>
+        <p>Children: <span class="student_info">{{ .Children}}</span></p>
+        <p>School Attended:<span class="student_info">{{ .School_Attended}}</span></p>
+        <p>Program Studied:<span class="student_info">{{ .Major_In}}</span></p>
+        <p>Degre Obtained: <span class="student_info">{{ .Degree_Obtained}}</span></p>
+        <p>Current Occupation:<span class="student_info"> {{ .Current_Occupation}}</span></p>
+        <p>Field of interested in: <span class="student_info">{{ .Field_Interested}}</span></p>
+        <p>Prio Techniques Studied:<span class="student_info">{{ .Prio_Techniques}}</span> </p>
+        <p>Previous Experience: <span class="student_info">{{ .Previouse_Experience}}</span></p>
+        <p>Purpose of enrollment: <span class="student_info">{{ .Purpose_Of_Enrollment}}</span></p>
+        <p>Use of Knowledge odtained: <span class="student_info">{{ .Use_Of_Knowledge}}</span></p>
+        <p>Reason for chosing UCMS:<span class="student_info">{{ .Reason_For_Choice}}</span> </p>
+        <p>How did they find out about UCMS:<span class="student_info">{{ .Method_Of_Encounter}}</span> </p>
     
-    <div class="program_table">
-      <table>
-          <thead>
-          <tr>
-              <th>#</th>
-              <th>Course Name</th>
-              <th>Exam Result</th>
-          </tr>
-          </thead>
-          <tbody>
-              <tr>
-                  <td>1</td>
-                  <td>Communication Skills</td>
-                  <td>Pedding</td>
-  
-              </tr>
-              <tr>
-                  <td>2</td>
-                  <td>Public Speaking</td>
-                  <td>Pedding</td>
-  
-              </tr><tr>
-                  <td>3</td>
-                  <td>Intuition</td>
-                  <td>Pedding</td>
-  
-              </tr>
-              <tr>
-                  <td>4</td>
-                  <td>Understanding Religions of the World</td>
-                  <td>Pedding</td>
-  
-              </tr><tr>
-                  <td>5</td>
-                  <td>Public Relations</td>
-                  <td>Pedding</td>
-  
-              </tr><tr>
-                  <td>6</td>
-                  <td>Anger Management</td>
-                  <td>Pedding</td>
-  
-              </tr><tr>
-                  <td>7</td>
-                  <td>Connecting With Angels</td>
-                  <td>Pedding</td>
-  
-              </tr>
-              <tr>
-                  <td>8</td>
-                  <td>Critical Thinking</td>
-                  <td>Pedding</td>
-  
-              </tr>
-              <tr>
-                  <td>9</td>
-                  <td>Financial Education</td>
-                  <td>Pedding</td>
-  
-              </tr>
-          </tbody>
-      </table>
+    </div>
+    <div class="update_div">
+        <div class="update_btn">
+            <p>Update Student Profile</p>
+        </div>
+        <div class="delete_btn">
+            <p>Delete Student Profile</p>
+        </div>
       </div>
-      <div class="update_div">
+    <hr>
+    
+    <div class="student_programs">
+      <h5>Programs Applied For</h5>
+      <hr>
+      
+    
+      <div class="program_details">
+            {{ template "admin_dash_acams"}}
+      </div>
+    
+    </div>
+    
+</div>
+
+
+{{define "admin_dash_acams"}}
+    <h5 class="program_name">Award of Certificate of Attendance in Metaphysical Sciences</h5>
+                
+    <div class="program_table">
+    <table>
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Course Name</th>
+            <th>Exam</th>
+            <th>Record Result</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Communication Skills</td>
+                <td>Pedding</td>
+                <td>Pedding</td>
+
+
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Public Speaking</td>
+                <td>Pedding</td>
+                <td>Pedding</td>
+
+
+            </tr><tr>
+                <td>3</td>
+                <td>Intuition</td>
+                <td>Pedding</td>
+                <td>Pedding</td>
+
+
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Understanding Religions of the World</td>
+                <td>Pedding</td>
+                <td>Pedding</td>
+
+
+            </tr><tr>
+                <td>5</td>
+                <td>Public Relations</td>
+                <td>Pedding</td>
+                <td>Pedding</td>
+
+
+            </tr><tr>
+                <td>6</td>
+                <td>Anger Management</td>
+                <td>Pedding</td>
+                <td>Pedding</td>
+
+
+            </tr><tr>
+                <td>7</td>
+                <td>Connecting With Angels</td>
+                <td>Pedding</td>
+                <td>Pedding</td>
+
+
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Critical Thinking</td>
+                <td>Pedding</td>
+                <td>Pedding</td>
+
+
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>Financial Education</td>
+                <td>Pedding</td>
+                <td>Pedding</td>
+
+
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <div class="update_div">
         <div class="update_btn">
             <p>Update Program Data</p>
         </div>
-      </div>
-  </div>
-
-</div>
-
-
-
-
+    </div>
 {{end}}

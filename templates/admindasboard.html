@@ -13,9 +13,9 @@
 
     
 
-    <link href="/assets/css/dasboard.css?v=1.31" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/studentportal.css?v=1">
-    <link rel="stylesheet" href="/assets/css/studentdetails.css">
+    <link href="/assets/css/dasboard.css?v=1.35" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/studentportal.css?v=2">
+    <link rel="stylesheet" href="/assets/css/studentdetails.css?=1.0">
     <script src="/assets/htmx.js"></script>
 
     </head>
@@ -23,14 +23,16 @@
    
   <body>
     <div class="heading">
-      <h3 class="ucms_name">University College Of Metaphisical Science<br>
-          <span>Admin</span></n>
+      <h3 class="ucms_name">
+          Admin
       </h3>
       <div class="heading_nav">
-          <ul class="heading_nav_ul">
-              <li><a href="">sign out</a></li>
-              <li><a href="">{{ .Name}}</a></li>
-          </ul>
+        <div>
+            <a href="">{{ .Name}}</a>
+        </div>
+        <div>
+            <a href="">sign out</a>
+        </div>
       </div>
   </div>
  
@@ -106,9 +108,10 @@
                         <hr>
                     </div>
                     
+                    
                 </div>
               </div>
-            </div>
+        </div>
   </div>
 
 
