@@ -58,6 +58,7 @@ type ACAMS struct {
 	Anger_Management       string
 	Connecting_With_Angels string
 	Critical_Thinking      string
+	Student_Results        string
 	Complete               string
 }
 

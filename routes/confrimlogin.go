@@ -8,6 +8,102 @@ import (
 	"ucmps/dbcode"
 )
 
+type ACMS struct {
+	UUID                           string
+	Student_UUID                   string
+	First_Name                     string
+	Last_Name                      string
+	Email                          string
+	Payment_Method                 string
+	Paid                           string
+	Accepted                       string
+	Student_Results                string
+	Complete                       string
+	Mindfulness                    string
+	Dreams_and_Dreaming            string
+	Energy_of_Money                string
+	Crystals_and_Gemstones         string
+	Forgiveness                    string
+	Cleansing_and_Fasting          string
+	Astrology                      string
+	African_Culture_and_Traditions string
+	Transforming_personalities     string
+}
+
+type ADMS struct {
+	UUID                                    string
+	Student_UUID                            string
+	First_Name                              string
+	Last_Name                               string
+	Email                                   string
+	Payment_Method                          string
+	Paid                                    string
+	Accepted                                string
+	Student_Results                         string
+	Complete                                string
+	Creative_Writing                        string
+	Understanding_Miracles                  string
+	Channeling_skills                       string
+	Enneagram                               string
+	Mythology_on_Gods_and_Goddess           string
+	Herbs                                   string
+	Meditation_skills                       string
+	Mantras_and_Mudras                      string
+	Divinations                             string
+	Archetypes                              string
+	Basics_in_Research                      string
+	Understanding_Propaganda                string
+	Great_Spiritual_Teachers                string
+	Reprogramming                           string
+	Shamanism                               string
+	Mystery_Schools_in_the_world            string
+	Law_and_Ethics_in_Metaphysical_Sciences string
+	Non_Violet_Communication                string
+}
+
+type ABDMS struct {
+	UUID                             string
+	Student_UUID                     string
+	First_Name                       string
+	Last_Name                        string
+	Email                            string
+	Payment_Method                   string
+	Paid                             string
+	Accepted                         string
+	Student_Results                  string
+	Complete                         string
+	Cause_and_Core_Issues_in_Beliefs string
+	Emotional_Well_Being             string
+	The_Art_of_Breathing             string
+	Spiritual_symbols_and_colours    string
+	Psychic_Skills                   string
+	Shadow_Work                      string
+	The_Craft                        string
+	Hypnosis_and_Beyond              string
+	Mysterious_experiences           string
+	Manifestation_skills             string
+	Unlocking_Creativity             string
+	Transpersonal_counselling        string
+	African_Healing_Arts             string
+	Ceremonies_of_the_World          string
+	Mother_Earth                     string
+	The_Art_of_Placement             string
+	Chakras_and_Auras                string
+	Transforming_personalities       string
+	Mayan_Calendar                   string
+	Polarity_Therapy                 string
+	Introduction_To_Meditation       string
+	Health_and_Nutrition             string
+	Setting_up_a_business            string
+}
+
+type StudentCourse struct {
+	ACAMSCourse ACAMS
+	ACMSCourse  ACMS
+	ADMSCourse  ADMS
+	ABDMSCourse ABDMS
+}
+
 func ValidateSudent(emailin string) (bool, string) {
 	isstudent := true
 	dbread := dbcode.SqlRead()
@@ -103,15 +199,11 @@ func GetFromACAMS(uuidin string) ACAMS {
 	return studentacamsdata
 }
 
-type StudentCourse struct {
-	ACAMSCourse ACAMS
-}
-
 func ConfirmStudentLogin(w http.ResponseWriter, r *http.Request) {
 
 	var students_data_acams ACAMS
 
-	tpl = template.Must(template.ParseGlob("templates/*/*.html"))
+	tpl = template.Must(template.ParseGlob("templates/*.html"))
 
 	r.ParseForm()
 	if r.Method == "POST" {
@@ -126,6 +218,9 @@ func ConfirmStudentLogin(w http.ResponseWriter, r *http.Request) {
 		if confirm {
 			students_data_acams = GetFromACAMS(studentuuid)
 			fmt.Println("From ACAMS", students_data_acams)
+			studentprogramlist := GetStudentPrograms(studentuuid)
+
+			fmt.Println("Programs Student Has Been Accepted For: ", studentprogramlist)
 		}
 
 	}

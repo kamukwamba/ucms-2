@@ -228,7 +228,7 @@ func ACAMSCount() int {
 	return counter
 }
 
-func GetStudentPrograms(student_uuid string) string {
+func GetStudentPrograms(student_uuid string) []string {
 	dbread := dbcode.SqlRead()
 
 	stmt, err := dbread.DB.Prepare("select program_list from studentprogramlist where student_uuid = ?")
@@ -242,11 +242,14 @@ func GetStudentPrograms(student_uuid string) string {
 
 	err = stmt.QueryRow(student_uuid).Scan(&program_list)
 
+	trimedlist := strings.Trim(program_list, "[]\"")
+	listout := strings.Split(trimedlist, ",")
+
 	if err != nil {
 		fmt.Println("FAILED TO GET STUDENT PROGRAM LIST")
 	}
 
-	return program_list
+	return listout
 }
 
 func GetStudentAllDetails(uuid string) StudentInfo {
@@ -278,10 +281,7 @@ func StudentProfileData(w http.ResponseWriter, r *http.Request) {
 
 	studentuuid := r.PathValue("id")
 	studentdataout := GetStudentAllDetails(studentuuid)
-	studentprogramlist := GetStudentPrograms(studentuuid)
-
-	trimedlist := strings.Trim(studentprogramlist, "[]\"")
-	listout := strings.Split(trimedlist, ",")
+	listout := GetStudentPrograms(studentuuid)
 
 	fmt.Println("Student UUID: ", studentuuid)
 	fmt.Println("Student Data: ", studentdataout)

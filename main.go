@@ -55,7 +55,7 @@ func main() {
 
 	sqlabdms := `create table if not exists abdms(
 		uuid_blob_not_null,
-		Causes _nd_Core_Issues_in_Beliefs text,
+		Causes_and_Core_Issues_in_Beliefs text,
 		Emotional_Well_Being text,
 		The_Art_of_Breathing text,
 		Spiritual_symbols_and_colours text,
@@ -67,7 +67,7 @@ func main() {
 		Manifestation_skills text,
 		Unlocking_Creativity text,
 		Transpersonal_counselling text,
-		African Healing_Arts text,
+		African_Healing_Arts text,
 		Ceremonies_of_the_World text,
 		Mother_Earth text,
 		The_Art_of_Placement text,
