@@ -48,7 +48,7 @@ type DashData struct {
 }
 
 type StudentProgramList struct {
-	Programs []string
+	Program_Name string
 }
 
 func AdminAuth(data AdminLogData, dataList []dbcode.AdminInfo) (bool, AdminInfo) {
@@ -117,6 +117,26 @@ func AdminDashboard(w http.ResponseWriter, r *http.Request) {
 	// if err != nil {
 	// 	log.Fatal(err)
 	// }
+
+}
+
+func StudentACAMSData(student_uuid string) {
+	dbread := dbcode.SqlRead()
+
+	stmt, err := dbread.DB.Prepare("select program_list from studentprogramlist where student_uuid = ?")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer stmt.Close()
+
+	var program_list string
+
+	err = stmt.QueryRow(student_uuid).Scan(&program_list)
+
+	if err != nil {
+		fmt.Println("FAILED TO GET STUDENT PROGRAM LIST")
+	}
 
 }
 
@@ -269,7 +289,14 @@ func StudentProfileData(w http.ResponseWriter, r *http.Request) {
 
 	for _, program := range listout {
 		fmt.Println("Program Name: ", program)
+		switch program {
+		case "ACAMS":
+			StudentACAMSData(studentuuid)
+			fmt.Println("Certificate Program")
+		}
+
 	}
+
 	tpl = template.Must(template.ParseGlob("templates/*.html"))
 
 	err := tpl.ExecuteTemplate(w, "studentdetailstemplate.html", studentdataout)
