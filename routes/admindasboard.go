@@ -198,18 +198,6 @@ func GetACAMSStudents() []ReturnACAMS {
 	return datalist
 }
 
-func ACAMSStudentData(w http.ResponseWriter, r *http.Request) {
-	tpl = template.Must(template.ParseGlob("templates/*.html"))
-
-	acamsstudents := GetACAMSStudents()
-
-	err := tpl.ExecuteTemplate(w, "studentdataadmin.html", acamsstudents)
-
-	if err != nil {
-		log.Fatal(err)
-	}
-}
-
 func ACAMSCount() int {
 	dbread := dbcode.SqlRead()
 	var counter int
@@ -277,6 +265,8 @@ func GetStudentAllDetails(uuid string) StudentInfo {
 	return data
 }
 
+//ROUTER CODE
+
 func StudentProfileData(w http.ResponseWriter, r *http.Request) {
 
 	studentuuid := r.PathValue("id")
@@ -305,4 +295,16 @@ func StudentProfileData(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 
+}
+
+func ACAMSStudentData(w http.ResponseWriter, r *http.Request) {
+	tpl = template.Must(template.ParseGlob("templates/*.html"))
+
+	acamsstudents := GetACAMSStudents()
+
+	err := tpl.ExecuteTemplate(w, "studentdataadmin.html", acamsstudents)
+
+	if err != nil {
+		log.Fatal(err)
+	}
 }

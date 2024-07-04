@@ -109,7 +109,7 @@ func main() {
 	sqlacams := ` 
 		create table if not exists acams(
 			uuid blod not null,
-			st_uuid blob not null,
+			student_uuid blob not null,
 			first_name text,
 			last_name text,
 			email text,
@@ -227,6 +227,7 @@ func main() {
 	router.HandleFunc("/acamsstudentdata", routes.ACAMSStudentData)
 	router.HandleFunc("/confirmlogin", routes.ConfirmStudentLogin)
 	router.HandleFunc("/studentprofiledata/{id}", routes.StudentProfileData)
+	router.HandleFunc("/procced/{id}", routes.Student_Procced)
 
 	router.Handle("/assets/", http.StripPrefix("/assets", fs))
 

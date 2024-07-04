@@ -104,6 +104,13 @@ type StudentCourse struct {
 	ABDMSCourse ABDMS
 }
 
+func Student_Procced(w http.ResponseWriter, r *http.Request) {
+
+	student_uuid := r.PathValue("id")
+	fmt.Println("Student ID: ", student_uuid)
+
+}
+
 func ValidateSudent(emailin string) (bool, string) {
 	isstudent := true
 	dbread := dbcode.SqlRead()
@@ -199,6 +206,95 @@ func GetFromACAMS(uuidin string) ACAMS {
 	return studentacamsdata
 }
 
+func GetFromACMS(student_uuid string) {
+
+}
+
+func GetFromADMS(student_uuid string) {
+
+}
+
+func GetFromABDMS(student_uuid string) {
+
+}
+
+func GetStudentACAMSOne(students_uuid string) bool {
+
+	dbread := dbcode.SqlRead()
+	var is_in_acmas bool = true
+	//CHNAGE "ST_UUID" TO "STUDENT_UUID" WHEN YOU DELETE THE DATABASE!!!!!
+	stmt, err := dbread.DB.Prepare("select uuid, st_uuid,accepted,communication,communication,public_speaking,intuition,understanding_religion,public_relation,anger_management,connecting_with_angles,critical_thinking,complete where st_uuid = ? ")
+
+	if err != nil {
+		fmt.Println("SOMETHING WENT WRONG WITH RETREVING A SINGLE ACAMS STUDENT")
+	}
+
+	defer stmt.Close()
+
+	var dataout ACAMS
+	var uuid string
+	var student_uuid string
+	var accepted string
+	var communication string
+	var public_speaking string
+	var intuition string
+	var understanding_religion string
+	var public_relation string
+	var anger_management string
+	var connecting_with_angles string
+	var critical_thinking string
+	var complete string
+
+	err = stmt.QueryRow(students_uuid).Scan(uuid, student_uuid, accepted, communication, public_speaking, intuition, understanding_religion, public_relation, anger_management, connecting_with_angles, critical_thinking, complete)
+
+	if err != nil {
+		fmt.Println("FAILED TO POPULATE THE STRINGS CREATED")
+	}
+
+	if accepted != "true" {
+		is_in_acmas = false
+
+		return is_in_acmas
+	} else {
+		dataout.UUID = uuid
+		dataout.Accepted = accepted
+		dataout.Student_UUID = student_uuid
+		dataout.Communication = communication
+		dataout.Public_Relation = public_speaking
+		dataout.Intuition = intuition
+		dataout.Understanding_Religion = understanding_religion
+		dataout.Public_Relation = public_relation
+		dataout.Anger_Management = anger_management
+		dataout.Connecting_With_Angels = connecting_with_angles
+		dataout.Critical_Thinking = critical_thinking
+		dataout.Complete = complete
+	}
+
+	return is_in_acmas
+
+}
+
+func GetStudentProgramData(programlist []string, students_uuid string) string {
+
+	programout := "Working"
+
+	for _, program := range programlist {
+
+		switch program {
+		case "ACMS":
+			GetStudentACAMSOne(students_uuid)
+
+		default:
+
+		}
+		fmt.Println(program)
+
+	}
+
+	return programout
+
+}
+
 func ConfirmStudentLogin(w http.ResponseWriter, r *http.Request) {
 
 	var students_data_acams ACAMS
@@ -215,11 +311,15 @@ func ConfirmStudentLogin(w http.ResponseWriter, r *http.Request) {
 		idvalue := r.PathValue("id")
 		fmt.Println("ID Value", idvalue)
 		confirm, studentuuid := ValidateSudent(studentemail)
+
 		if confirm {
+
 			students_data_acams = GetFromACAMS(studentuuid)
 			fmt.Println("From ACAMS", students_data_acams)
 			studentprogramlist := GetStudentPrograms(studentuuid)
+			programdataout := GetStudentProgramData(studentprogramlist, studentuuid)
 
+			fmt.Println(programdataout)
 			fmt.Println("Programs Student Has Been Accepted For: ", studentprogramlist)
 		}
 
@@ -231,4 +331,5 @@ func ConfirmStudentLogin(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(students_data)
 
 	tpl.ExecuteTemplate(w, "studentportal.html", students_data)
+
 }
